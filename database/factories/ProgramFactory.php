@@ -22,7 +22,11 @@ class programFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'id' => $this->faker->id,
+            'year' => $this->faker->name,
+            'class code' => $this->faker->classCode,
+            'friendly name'=> $this->faker->friendlyName,
+            'major' => $this->faker->major,
         ];
     }
 }

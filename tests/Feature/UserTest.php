@@ -5,9 +5,8 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use App\Models\User;
 
-class UserTest extends TestCase
+class User extends TestCase
 {
     use RefreshDatabase;
     /**
@@ -17,15 +16,15 @@ class UserTest extends TestCase
      */
     public function testExample()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
-    public function testExample2() 
-    {
         // https://laravel.com/docs/8.x/database-testing
-        $user = User::factory()->create(['email' => 'sally@example.com']);
-        $this->assertDatabaseHas('users', ['email' => 'sally@example.com',]);
-        
+        // $user = factory(App/User)->create(['first_name' => 'testName', 'last_name' => 'testLastName', 
+        //     'email' => 'test@example.com', 'email_verified_at' => now(), 'password' => 'password']);
+        // $this->assertDatabaseHas('users', ['first_name' => 'testName', 'last_name' => 'testLastName',
+        //     'email' => 'test@example.com', 'email_verified_at' => now(), 'password' => 'password']);
+
+        $user = \App\Models\User::create  (['first_name' => 'John', 'last_name' => 'Doe', 
+            'email' => 'johndoe@example.com', 'email_verified_at' => now(), 'password' => 'password']);
+        $this->assertDatabaseHas ('users', ['first_name' => 'John', 'last_name' => 'Doe', 
+            'email' => 'johndoe@example.com', 'email_verified_at' => now(), 'password' => 'password']);
     }
 }

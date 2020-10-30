@@ -22,7 +22,10 @@ class RuleFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'id' => $this->faker->id,
+            'program_id' => $this->faker->programID,
+            'friendly_name' => $this->faker->unique()->name,
+            'rule' => $this->faker->rule,
         ];
     }
 }

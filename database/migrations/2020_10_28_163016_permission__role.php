@@ -13,16 +13,9 @@ class PermissionRole extends Migration
      */
     public function up()
     {
-        //
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        //
+        Schema::create('roles_users', function (Blueprint $table){
+            $table->bigInteger('role_id');
+            $table->bigInteger('user_id');
+        });
     }
 }
