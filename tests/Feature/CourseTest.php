@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 class Course extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      *
@@ -15,8 +16,7 @@ class Course extends TestCase
      */
     public function testExample()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $course = \App\Models\Course::create  (['user_id' => '01234', 'program_id' => '56789', 'title' => 'class_for_dum_dum_heads', 'term' => 'Spring2021', 'grade' => 'A', 'credits' => '5']);
+        $this->assertDatabaseHas ('courses',   ['user_id' => '01234', 'program_id' => '56789', 'title' => 'class_for_dum_dum_heads', 'term' => 'Spring2021', 'grade' => 'A', 'credits' => '5']);
     }
 }

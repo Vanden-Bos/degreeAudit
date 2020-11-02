@@ -8,15 +8,15 @@ use Tests\TestCase;
 
 class Rule extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      *
      * @return void
      */
-    public function testExample()
+    public function testRule()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $rule = \App\Models\Rule::create  (['program_id' => '123456', 'rule' => '(CSC130 & CSC131) || CSC 143', 'friendly_name' => 'CSC intro classes']);
+        $this->assertDatabaseHas ('rules', ['program_id' => '123456', 'rule' => '(CSC130 & CSC131) || CSC 143', 'friendly_name' => 'CSC intro classes']);
     }
 }

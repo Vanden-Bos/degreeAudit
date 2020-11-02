@@ -8,15 +8,15 @@ use Tests\TestCase;
 
 class Program extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      *
      * @return void
      */
-    public function testExample()
+    public function testProgram()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $rule = \App\Models\Program::create  (['program_id' => '123456', 'friendly_name' => 'Computer_Science_Major']);
+        $this->assertDatabaseHas ('programs', ['program_id' => '123456', 'friendly_name' => 'Computer_Science_Major']);
     }
 }

@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 class Exception extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      *
@@ -15,8 +16,7 @@ class Exception extends TestCase
      */
     public function testExample()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $exception = \App\Models\Exception::create  (['user_id' => '123456', 'rule_id' => '789101112']);
+        $this->assertDatabaseHas ('exceptions',      ['user_id' => '123456', 'rule_id' => '789101112']);
     }
 }
