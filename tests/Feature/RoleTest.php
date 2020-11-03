@@ -16,7 +16,13 @@ class Role extends TestCase
      */
     public function testRole()
     {
-        $rule = \App\Models\Role::create  (['user_id' => '123456', 'role' => 'admin']);
-        $this->assertDatabaseHas ('roles', ['user_id' => '123456', 'role' => 'admin']);
+        $rule = \App\Models\Role::create(['user_id' => '123456', 'role' => 'admin']);
+        $this->assertDatabaseHas('roles', ['user_id' => '123456', 'role' => 'admin']);
+    }
+
+    public function testRoleUserPivot()
+    {
+        $role = Role::find($role_id);
+        $role->users()->attach($user_id);
     }
 }

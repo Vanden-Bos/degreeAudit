@@ -6,23 +6,11 @@ use Illuminate\Support\Facades\Schema;
 
 class RoleUser extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        //
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        //
+        Schema::create('roles_users', function (Blueprint $table) {
+            $table->bigInteger('role_id');
+            $table->bigInteger('user_id');
+        });
     }
 }

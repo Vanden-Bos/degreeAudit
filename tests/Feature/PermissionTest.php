@@ -16,7 +16,19 @@ class Permission extends TestCase
      */
     public function testPermission()
     {
-        $permission = \App\Models\Permission::create  (['user_id' => '123456', 'permission' => 's/he can do the thing']);
-        $this->assertDatabaseHas ('permissions',       ['user_id' => '123456', 'permission' => 's/he can do the thing']);
+        $permission = \App\Models\Permission::create(['user_id' => '123456', 'permission' => 's/he can do the thing']);
+        $this->assertDatabaseHas('permissions',       ['user_id' => '123456', 'permission' => 's/he can do the thing']);
+    }
+
+    public function testPermissionRolePivot()
+    {
+        $permission = Permission::find($permission_id);
+        $permission->roles()->attach($role_id);
+    }
+
+    public function testPermissionUserPivot()
+    {
+        $permission = Permission::find($permission_id);
+        $permission->users()->attach($user_id);
     }
 }

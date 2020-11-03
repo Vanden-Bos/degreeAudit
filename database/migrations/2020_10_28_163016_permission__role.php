@@ -6,16 +6,11 @@ use Illuminate\Support\Facades\Schema;
 
 class PermissionRole extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create('roles_users', function (Blueprint $table){
+        Schema::create('permissions_roles', function (Blueprint $table) {
+            $table->bigInteger('permission_id');
             $table->bigInteger('role_id');
-            $table->bigInteger('user_id');
         });
     }
 }

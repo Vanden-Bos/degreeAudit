@@ -6,23 +6,11 @@ use Illuminate\Support\Facades\Schema;
 
 class PermissionUser extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        //
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        //
+        Schema::create('permissions_users', function (Blueprint $table) {
+            $table->bigInteger('permission_id');
+            $table->bigInteger('user_id');
+        });
     }
 }
